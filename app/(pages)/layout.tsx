@@ -7,6 +7,7 @@ import "../globals.css";
 import Navbar from "@/components/ui/navbar";
 import PageContainer from "@/layout/page-container";
 import ErrorToaster from "@/components/custom/error-toaster";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,9 @@ export default async function RootLayout({
         <Providers>
           <Navbar />
           <PageContainer>{children}</PageContainer>
-          <ErrorToaster />
+          <Suspense>
+            <ErrorToaster />
+          </Suspense>
         </Providers>
       </body>
     </html>
